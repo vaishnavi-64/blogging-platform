@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+    content="width=device-width,
+    initial-scale=1.0">
+    <meta
+    http-equiv="X-UA-Compatible"
+    content="IE=edge">
+    <title>Portfolio</title>
+    <style>
+        body, htnl {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            height: 100%;
+            color: #333;
+            background-image: url("image p.jpg");
+            background-size: cover;
+        }
+        header {
+            background-color:;
+            color: white;
+            padding: 40px;
+            text-align: center;
+            font-size: 250%;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            animation: glow is ease-in-out infinite alternate;
+        }
+        .glow {
+            font-size: 80px;
+            color: #fff;
+             text-align: center;
+             animation: glow 1s ease-in-out infinite alternate;
+        }
+
+        @-webkit-keyframes glow {
+              from {
+              text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+                 }
+  
+             to {
+             text-shadow: 0 0 20px #fff, 0 0 30px #f6a7ce, 0 0 40px #f1b5d3, 0 0 50px #f5bad8, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+                 }
+        }
+        .nav {
+            margin-top: 10px;
+        }
+        .nav a:hover {
+            color: #f39c12;
+        }
+        * {
+            box-sizing: border-box;
+        }
+
+        .row {
+         display: flex;
+        }
+
+        /* Create three equal columns that sits next to each other */
+        .column {
+             flex: 33.33%;
+            padding: 5px;
+             }
+
+        .about, .projects, .resume, .contact {
+            margin-bottom: 50px;
+        }
+        .about h2, .projects h2, .contact h2 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .about p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+        .project-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .project-item {
+            flex: 1 1 300px;
+            background-color: #e2c3f8;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .project-item img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .project-item h3 {
+            font-size: 1.4em;
+            margin-top: 15px;
+        }
+        .project-item p {
+            font-size: 1em;
+            color: #090303;
+        }
+        .resume-section a {
+            padding: 15px 30px;
+            background-color: #27ae60;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+        }
+        .resume-section a:hover {
+            background-color: #e9c2f1;
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #2c3e50;
+            color: rgb(7, 1, 1);
+            font-size: 0.9em;
+        }
+        footer a {
+            color: #f39c12;
+            text-decoration: none;
+        }
+    </style>
+        </head>
+        <body>
+            <h1 class="glow">VAISHNAVI POSA</h1>
+              <header>
+              <div class="nav">
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="resume">Resume</a>
+                    <a href="#contact">Contact</a>
+                    </div>                
+            </header>
+                <!--About Section-->
+                <section id="about"
+                class="about">
+                <div class="row">
+                    <div class="column">
+                        <!--Image section-->
+                         <img src="v2.jfif" alt="profile picture" width="300" height="300" border-radius="50%">
+                    </div>
+                    <div class="column">     
+                        <h2>About Me</h2>
+                        <p>Hello! I'm Vaishnavi Posa,
+                            a final year student at Sri Padmavathi Mahila University 
+                            in Tirupathi. As a web developer enthusiast, I have been
+                            honing my skills in both front-end and back-end technologies,
+                            always striving to create clean, efficient and user friendly
+                            web applications.
+                             Balancing my academic journey with my passion for web developement,
+                            I'm constantly exploring new techniques and staying up-to-date with the latest 
+                            trends in the tech world. As I near graduation, I'm excited to transition into  
+                            the professional world and apply the knowledge and experience I've gained to 
+                            real-world projects.              
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <!-- Project Section -->
+             <section id="projects"
+             class="projects">
+            <h2>My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-item">
+                  <h3>Project one</h3>
+                    <p>I successfully completed my first project in Python full stack
+                        at ExcelR.This project involved building a complete web application
+                        using python as the core back-end technology, integrating it with 
+                        front-end frameworks and databases. Through this project, I gained
+                        hands-on experience in designing, developing, and deploying full-stack applications.
+                             The project challenged me to apply my skills in various aspects, including 
+                        API integration, database management, and front-end development, while ensuring
+                         performance optimization and seamless user experiences. It was a crutial milestone
+                         that boosted my confidence in handling real-world web development scenarios.
+                    </p>
+                    <a href="EXCELR-78643-Vaishnavi Posa.pdf" target="_blank">Click Here</a>
+                </div>
+            </div>
+        </section>
+        <!-- Resume Section -->
+         <section id="resume"
+         class="resume">
+        <h2> My Resume </h2>
+        <div class="resume-section">
+            <a href="Vaishu resume2 (1).pdf" target="_blank">Download Resume</a>
+        </div>
+    </section>
+        <!-- Contact Section -->
+         <section id="contact"
+         class="contact">
+         <h2>Contact Me</h2>
+         <p> If you'd like to Get
+            in touch with me, fell free to reach out via email at 
+            <a href="mail to: vaishnaviposa15@gmail.com">vaishnaviposa15@gmail.com</a>
+         </p>    
+        </section>
+            </div>
+            <footer>
+                &copy; 2024 Vaishnavi Posa |
+                <a href="https://github.com/Posavaishnavi/CODSOFT">github</a>|
+                <a href="https://www.linkedin.com/in/vaishnavi-posa-3a3742268?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BWkMz0qCWQ4mv23KVy2UAYw%3D%3D">
+                linkedin</a>
+            </footer>
+            <script>
+                //Smooth scroll for navigation
+                document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+                    anchor.addEventListner('click',function(e)){
+                        e.preventDefault();
+                        document.querySelector(this.getAttribute('href')).scrollIntoView({
+                            behaviour:'smooth'
+                        })
+                    }
+                })
+                //Typewriter effect for header
+                const TypewriterText="Welcome to My Portfolio!";
+                let i=0;
+                function typewriter(){
+                    if(i<typewriterText.lenght){
+                        document.getElementById("typewriter").innerHTML+=TypewriterText.chatAt(i);
+                        i++;
+                        setTimeout(typeWriter,100);
+                    }
+                }
+                window.onload=Typewriter;
+            </script>
+        </body>
+</html>

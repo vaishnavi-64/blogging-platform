@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Blogging Platform</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+    .container { max-width: 800px; margin: 0 auto; }
+    .post, .comment { border: 1px solid #ddd; padding: 10px; margin: 10px 0; }
+    .post-title { font-weight: bold; }
+    .comment-section, .comment { margin-top: 10px; padding-left: 20px; }
+    input, textarea { width: 100%; padding: 10px; margin: 5px 0; }
+    button { padding: 10px; cursor: pointer; }
+    .search-bar { display: flex; }
+    .search-bar input { flex: 1; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Blogging Platform</h1>
+
+  <!-- User Registration/Login -->
+  <div id="auth-section">
+    <h2>Register / Login</h2>
+    <input id="username" type="text" placeholder="Username">
+    <button onclick="registerUser()">Register/Login</button>
+    <p id="welcome-message"></p>
+  </div>
+
+  <!-- Post Creation -->
+  <div id="post-section" style="display:none;">
+    <h2>Create Post</h2>
+    <input id="post-title" type="text" placeholder="Post Title">
+    <textarea id="post-content" rows="4" placeholder="Post Content"></textarea>
+    <input id="post-tags" type="text" placeholder="Tags (comma-separated)">
+    <button onclick="createPost()">Create Post</button>
+  </div>
+
+  <!-- Search and Tag Filter -->
+  <div id="filter-section" style="display:none;">
+    <h2>Posts</h2>
+    <div class="search-bar">
+      <input id="search-bar" type="text" placeholder="Search posts..." oninput="renderPosts()">
+      <button onclick="clearSearch()">Clear</button>
+    </div>
+    <div id="posts-container"></div>
+  </div>
+</div>
+
+<script>
+  const users = [];
+  let posts = [];
+
+  // Register/Login
+  function registerUser() {
+    const username = document.getElementById('username').value.trim();
+    if (!username) return alert("Please enter a username.");
+    
+    if (!users.includes(username)) users.push(username);
+    document.getElementById('auth-section').style.display = 'none';
+    document.getElementById('post-section').style.display = 'block';
+    document.getElementById('filter-section').style.display = 'block';
+    document.getElementById('welcome-message').textContent = Welcome, ${username}!;
+  }
+
+  // Create Post
+  function createPost() {
+    const title = document.getElementById('post-title').value.trim();
+    const content = document.getElementById('post-content').value.trim();
+    const tags = document.getElementById('post-tags').value.trim().split(',').map(tag => tag.trim());
+    
+    if (!title || !content) return alert("Title and content are required.");
+    
+    const post = {
+      id: Date.now(),
+      title,
+      content,
+      tags,
+      comments: []
+    };
+    posts.push(post);
+    renderPosts();
+    
+    document.getElementById('post-title').value = '';
+    document.getElementById('post-content').value = '';
+    document.getElementById('post-tags').value = '';
+  }
+
+  // Render Posts
+  function renderPosts() {
+    const searchQuery = document.getElementById('search-bar').value.toLowerCase();
+    const postsContainer = document.getElementById('posts-container');
+    postsContainer.innerHTML = '';
+    
+    posts.filter(post => 
+      post.title.toLowerCase().includes(searchQuery) || 
+      post.tags.some(tag => tag.toLowerCase().includes(searchQuery))
+    ).forEach(post => {
+      const postElement = document.createElement('div');
+      postElement.className = 'post';
+      
+      postElement.innerHTML = `
+        <div class="post-title">${post.title}</div>
+        <p>${post.content}</p>
+        <div><b>Tags:</b> ${post.tags.join(', ')}</div>
+        <button onclick="showCommentSection(${post.id})">Comments (${post.comments.length})</button>
+        <div id="comment-section-${post.id}" class="comment-section" style="display: none;">
+          <textarea id="comment-text-${post.id}" rows="2" placeholder="Add a comment..."></textarea>
+          <button onclick="addComment(${post.id})">Add Comment</button>
+          <div id="comments-${post.id}"></div>
+        </div>
+      `;
+      postsContainer.appendChild(postElement);
+      renderComments(post.id);
+    });
+  }
+
+  // Show Comment Section
+  function showCommentSection(postId) {
+    const section = document.getElementById(comment-section-${postId});
+    section.style.display = section.style.display === 'none' ? 'block' : 'none';
+  }
+
+  // Add Comment
+  function addComment(postId) {
+    const commentText = document.getElementById(comment-text-${postId}).value.trim();
+    if (!commentText) return;
+    
+    const post = posts.find(p => p.id === postId);
+    post.comments.push(commentText);
+    renderComments(postId);
+    
+    document.getElementById(comment-text-${postId}).value = '';
+  }
+
+  // Render Comments
+  function renderComments(postId) {
+    const post = posts.find(p => p.id === postId);
+    const commentsContainer = document.getElementById(comments-${postId});
+    commentsContainer.innerHTML = '';
+    
+    post.comments.forEach(comment => {
+      const commentElement = document.createElement('div');
+      commentElement.className = 'comment';
+      commentElement.textContent = comment;
+      commentsContainer.appendChild(commentElement);
+    });
+  }
+
+  // Clear Search
+  function clearSearch() {
+    document.getElementById('search-bar').value = '';
+    renderPosts();
+  }
+</script>
+
+</body>
+</html>
